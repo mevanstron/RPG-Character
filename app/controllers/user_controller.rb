@@ -1,7 +1,13 @@
 class UserController < ApplicationController
 
   get '/signup' do
-    "Sign up page coming soon!"
+    erb :'users/new'
+  end
+
+  post '/users' do
+    user = User.create(params[:user])
+
+
   end
 
   get '/login' do
