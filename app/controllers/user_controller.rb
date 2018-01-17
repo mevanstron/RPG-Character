@@ -20,9 +20,9 @@ class UserController < ApplicationController
   end
 
   post '/login' do
-    user = User.find_by(username: params[:user][:username], password: params[:user][:password])
+    user = User.find_by(username: params[:user][:username])
 
-    if user
+    if user && user.authenticate(params[:user][:password])
       redirect '/characters'
     else
       redirect '/login'
