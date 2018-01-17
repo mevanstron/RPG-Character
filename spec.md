@@ -2,7 +2,9 @@
 
 Specs:
 - [x] Use Sinatra to build the app
+    *Sinatra Gem loaded, The application runs using methods and conventions local to Sinatra DSL*
 - [ ] Use ActiveRecord for storing information in a database
+    *Database has been created using sqlite3.  Ruby Objects inherit from ActiveRecord and CRUD functionality si confirmed to sqlite3 db.*
 - [ ] Include more than one model class (list of model class names e.g. User, Post, Category)
 - [ ] Include at least one has_many relationship (x has_many y e.g. User has_many Posts)
 - [ ] Include user accounts
