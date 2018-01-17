@@ -7,7 +7,11 @@ class UserController < ApplicationController
   post '/users' do
     user = User.create(params[:user])
 
-
+    if user.save
+      redirect to '/characters'
+    else
+      redirect to '/signup'
+    end
   end
 
   get '/login' do
