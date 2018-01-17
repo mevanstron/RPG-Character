@@ -18,4 +18,11 @@ class UserController < ApplicationController
   get '/login' do
     erb :'users/login'
   end
+
+  post '/login' do
+    user = User.find_by(username: params[:user][:username], password: params[:user][:password])
+
+    if user
+    end
+  end
 end
