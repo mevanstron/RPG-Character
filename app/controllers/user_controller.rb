@@ -16,6 +16,6 @@ class UserController < ApplicationController
   end
 
   get '/login' do
-    "Login page coming soon!"
+    erb :'users/login'
   end
 end
