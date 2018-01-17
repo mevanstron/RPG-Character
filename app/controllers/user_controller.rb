@@ -23,6 +23,9 @@ class UserController < ApplicationController
     user = User.find_by(username: params[:user][:username], password: params[:user][:password])
 
     if user
+      redirect '/characters'
+    else
+      redirect '/login'
     end
   end
 end
