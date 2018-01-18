@@ -9,11 +9,15 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-    user = User.create(params[:user])
+    if User.all.none?{|u| u.username == params[:user][:username]}
+      user = User.create(params[:user])
 
-    if user.save
-      session[:user_id] = user.id
-      redirect to '/characters'
+      if user.save
+        session[:user_id] = user.id
+        redirect to '/characters'
+      else
+        redirect to '/signup'
+      end
     else
       redirect to '/signup'
     end
