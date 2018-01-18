@@ -1,12 +1,20 @@
 class CharacterController < ApplicationController
 
   get '/characters' do
-    @characters = Character.all
-    erb :'/characters/index'
+    if !Helpers.logged_in?(session)
+      redirect to '/'
+    else
+      @characters = Character.all
+      erb :'/characters/index'
+    end
   end
 
   get '/characters/new' do
-    erb :'/characters/new'
+    if !Helpers.logged_in?(session)
+      redirect to '/'
+    else
+      erb :'/characters/new'
+    end
   end
 
   post '/characters' do

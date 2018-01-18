@@ -32,15 +32,19 @@ class UserController < ApplicationController
 
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect '/characters'
+      redirect to '/characters'
     else
-      redirect '/login'
+      redirect to'/login'
     end
   end
 
   get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    erb :'users/show'
+    if !Helpers.logged_in?(session)
+      redirect to '/'
+    else
+      @user = User.find_by_slug(params[:slug])
+      erb :'users/show'
+    end
   end
 
   get '/logout' do
