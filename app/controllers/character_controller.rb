@@ -11,7 +11,7 @@ class CharacterController < ApplicationController
 
   post '/characters' do
     character = Character.new(params[:character])
-    character.user_id = session[user_id]
+    character.user_id = session[:user_id]
     character.save
 
     redirect to "/characters/#{character.id}"

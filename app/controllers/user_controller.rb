@@ -23,6 +23,7 @@ class UserController < ApplicationController
     user = User.find_by(username: params[:user][:username])
 
     if user && user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
       redirect '/characters'
     else
       redirect '/login'
@@ -30,7 +31,7 @@ class UserController < ApplicationController
   end
 
   get '/users/:slug' do
-    @user = User.find(params[:id])
+    @user = User.find(params[:slug])
     erb :'users/show'
   end
 end
