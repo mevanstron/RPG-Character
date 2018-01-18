@@ -1,0 +1,11 @@
+<h1>Edit <%= @character.name %></h1>
+<form action="/characters/<%= @character.id %>" method="post">
+  <input id ="hidden" type="hidden" name="_method" value="patch">
+  <label for="name">Name: </label><input id="name" type="text" name="character[name]" value="<%= @character.name %>">
+  <br></br>
+  <label for="race">Race: </label><input id="race" type="text" name="character[race]" value="<%= @character.race %>">
+  <br></br>
+  <label for="char_class">Class: </label><input id="char_class" type="text" name="character[char_class]" value="<%= @character.char_class %>">
+  <br></br>
+  <button type="submit" name="submit" value="submit">Submit</button>
+</form>
