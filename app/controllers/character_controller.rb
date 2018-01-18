@@ -24,6 +24,11 @@ class CharacterController < ApplicationController
   end
 
   get '/characters/:id/edit' do
+    @character = Character.find(params[:id])
     erb :'/characters/edit'
+  end
+
+  patch '/characters/:id' do
+    "Congratulations, you edited your character!"
   end
 end
