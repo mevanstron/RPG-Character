@@ -29,6 +29,8 @@ class CharacterController < ApplicationController
   end
 
   patch '/characters/:id' do
-    "Congratulations, you edited your character!"
+    character = Character.find(params[:id])
+    character.update(params[:character])
+    redirect to "/characters/#{character.id}"
   end
 end
