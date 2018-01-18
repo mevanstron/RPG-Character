@@ -1,8 +1,10 @@
 <h1>Character - <%= @character.name %></h1>
 <h3>Race - <%= @character.race %></h3>
 <h3>Class - <%= @character.char_class %></h3>
-<p><a href="/characters/<%= @character.id %>/edit">Edit</a></p>
-<form action="/characters/<%= @character.id %>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <button type="submit" name="delete" value="delete">Delete</button>
-</form>
+<% if @character.user_id == Helpers.current_user(session).id %>
+  <p><a href="/characters/<%= @character.id %>/edit">Edit</a></p>
+  <form action="/characters/<%= @character.id %>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <button type="submit" name="delete" value="delete">Delete</button>
+  </form>
+<% end %>
