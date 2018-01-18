@@ -14,6 +14,7 @@ class CharacterController < ApplicationController
     if !Helpers.logged_in?(session)
       redirect to '/'
     else
+      @user = Helpers.current_user(session)
       erb :'/characters/new'
     end
   end
