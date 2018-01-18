@@ -35,8 +35,16 @@ class CharacterController < ApplicationController
   end
 
   get '/characters/:id/edit' do
-    @character = Character.find(params[:id])
-    erb :'/characters/edit'
+    if !Helpers.logged_in?(session)
+      redirect to '/'
+    else
+      if Helpers.current_user(session).id == Character.find(params[:id]).user_id
+        @character = Character.find(params[:id])
+        erb :'/characters/edit'
+      else
+        redirect to "/characters/#{params[:id]}"
+      end
+    end
   end
 
   patch '/characters/:id' do
@@ -46,8 +54,12 @@ class CharacterController < ApplicationController
   end
 
   delete '/characters/:id/delete' do
-    character = Character.find(params[:id])
-    character.delete
-    redirect to '/characters'
+    if Helpers.current_user(session).id == Character.find(params[:id]).user_id
+      character = Character.find(params[:id])
+      character.delete
+      redirect to '/characters'
+    else
+      redirect to "/characters/#{params[:id]}"
+    end
   end
 end
