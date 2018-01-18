@@ -1,1 +1,4 @@
-A list of all characters on the app will go here.
+<h1>Characters</h1>
+<% @characters.each do |character| %>
+  <p><%= character.name %> - <%= character.char_class %></p>
+<% end %>
