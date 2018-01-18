@@ -21,8 +21,11 @@ class CharacterController < ApplicationController
     character = Character.new(params[:character])
     character.user_id = session[:user_id]
     character.save
-
-    redirect to "/characters/#{character.id}"
+    if character.save
+      redirect to "/characters/#{character.id}"
+    else
+      redirect to '/characters/new'
+    end
   end
 
   get '/characters/:id' do
@@ -50,7 +53,11 @@ class CharacterController < ApplicationController
   patch '/characters/:id' do
     character = Character.find(params[:id])
     character.update(params[:character])
-    redirect to "/characters/#{character.id}"
+    if character.save
+      redirect to "/characters/#{character.id}"
+    else
+      redirect to "/characters/#{character.id}/edit"
+    end
   end
 
   delete '/characters/:id/delete' do
