@@ -1,0 +1,5 @@
+<h1>Hello <%= @user.username %></h1>
+<% @user.characters.each do |character| %>
+<a href= "/characters/<%= character.id %>"><%= character.name %> - <%= character.char_class %></a><br />
+<% end %>
+<p><a href="/characters/new">New Character</a></p>
