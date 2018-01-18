@@ -1,7 +1,11 @@
 class UserController < ApplicationController
 
   get '/signup' do
-    erb :'users/new'
+    if !Helpers.logged_in?(session)
+      erb :'users/new'
+    else
+      redirect to '/characters'
+    end
   end
 
   post '/signup' do
@@ -16,7 +20,11 @@ class UserController < ApplicationController
   end
 
   get '/login' do
-    erb :'users/login'
+    if !Helpers.logged_in?(session)
+      erb :'users/login'
+    else
+      redirect to '/characters'
+    end
   end
 
   post '/login' do
@@ -36,7 +44,9 @@ class UserController < ApplicationController
   end
 
   get '/logout' do
-    session.clear
-    redirect "/"
+    if Helpers.logged_in?(session)
+      session.clear
+    end
+      redirect "/"
   end
 end
