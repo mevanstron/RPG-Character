@@ -5,6 +5,7 @@ class CharacterController < ApplicationController
       redirect to '/'
     else
       @characters = Character.all
+      @current_user = Helpers.current_user(session)
       erb :'/characters/index'
     end
   end
@@ -33,6 +34,7 @@ class CharacterController < ApplicationController
       redirect to '/'
     else
       @character = Character.find(params[:id])
+      @current_user = Helpers.current_user(session)
       erb :'/characters/show'
     end
   end
