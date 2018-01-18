@@ -22,4 +22,8 @@ class CharacterController < ApplicationController
 
     erb :'/characters/show'
   end
+
+  get '/characters/:id/edit' do
+    erb :'/characters/edit'
+  end
 end
