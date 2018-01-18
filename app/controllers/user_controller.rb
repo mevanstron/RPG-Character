@@ -34,4 +34,8 @@ class UserController < ApplicationController
     @user = User.find_by_slug(params[:slug])
     erb :'users/show'
   end
+
+  get '/logout' do
+    session.clear
+  end
 end
