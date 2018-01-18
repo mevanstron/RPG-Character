@@ -33,4 +33,10 @@ class CharacterController < ApplicationController
     character.update(params[:character])
     redirect to "/characters/#{character.id}"
   end
+
+  delete '/characters/:id/delete' do
+    character = Character.find(params[:id])
+    character.delete
+    redirect to '/characters'
+  end
 end
