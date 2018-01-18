@@ -4,7 +4,7 @@ class CharacterController < ApplicationController
     erb :'/characters/index'
   end
 
-  get 'characters/new' do
-    erb :'/chracters/new'
+  get '/characters/new' do
+    erb :'/characters/new'
   end
 end
