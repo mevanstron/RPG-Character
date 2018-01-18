@@ -26,9 +26,12 @@ class CharacterController < ApplicationController
   end
 
   get '/characters/:id' do
-    @character = Character.find(params[:id])
-
-    erb :'/characters/show'
+    if !Helpers.logged_in?(session)
+      redirect to '/'
+    else
+      @character = Character.find(params[:id])
+      erb :'/characters/show'
+    end
   end
 
   get '/characters/:id/edit' do
