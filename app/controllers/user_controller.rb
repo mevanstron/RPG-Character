@@ -46,8 +46,12 @@ class UserController < ApplicationController
     if !Helpers.logged_in?(session)
       redirect to '/'
     else
-      @user = User.find_by_slug(params[:slug])
-      erb :'users/show'
+      if Helpers.current_user(session).slug == params[:id]
+        @user = User.find_by_slug(params[:slug])
+        erb :'users/show'
+      else
+        redirect to "/characters/#{Helpers.current_user(session).slug]}"
+      end
     end
   end
 

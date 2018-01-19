@@ -2,9 +2,3 @@
 <% @characters.each do |character| %>
   <a href= "/characters/<%= character.id %>"><%= character.name %> - <%= character.char_class %></a><br />
 <% end %>
-<br />
-<p>
-  <a href="/characters/new">New Character</a>
-  <a href="/users/<%= Helpers.current_user(session).slug %>"><%= Helpers.current_user(session).username %> Characters</a>
-  <a href="/logout">Logout</a>
-</p>
