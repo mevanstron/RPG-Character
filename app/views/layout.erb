@@ -7,7 +7,17 @@
   </head>
   <body>
     <div class="container">
-      <p>nav path here</p>
+      <% if !Helpers.logged_in?(session) %>
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/">Home</a>
+            <a class="nav-item nav-link" href="/signup">Signup</a>
+            <a class="nav-item nav-link" href="/login">Login</a>
+          </div>
+        </div>
+      </nav>
+      <% end %>
       <%= yield %>
       <p>footer here</p>
     </div>
