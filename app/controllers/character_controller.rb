@@ -5,7 +5,6 @@ class CharacterController < ApplicationController
       redirect to '/'
     else
       @characters = Character.all
-      @current_user = Helpers.current_user(session)
       erb :'/characters/index'
     end
   end
@@ -14,7 +13,6 @@ class CharacterController < ApplicationController
     if !Helpers.logged_in?(session)
       redirect to '/'
     else
-      @user = Helpers.current_user(session)
       erb :'/characters/new'
     end
   end

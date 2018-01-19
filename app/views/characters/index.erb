@@ -5,6 +5,6 @@
 <br />
 <p>
   <a href="/characters/new">New Character</a>
-  <a href="/users/<%= @current_user.slug %>"><%= @current_user.username %> Characters</a>
+  <a href="/users/<%= Helpers.current_user(session).slug %>"><%= Helpers.current_user(session).username %> Characters</a>
   <a href="/logout">Logout</a>
 </p>
