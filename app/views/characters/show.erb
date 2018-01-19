@@ -1,11 +1,20 @@
-<h1>Character - <%= @character.name %></h1>
-<h3>Race - <%= @character.race %></h3>
-<h3>Class - <%= @character.char_class %></h3>
+<h1>Character</h1>
+<br />
+<h4>
+  Name - <%= @character.name %>
+  <br></br>
+  Race - <%= @character.race %>
+  <br></br>
+  Class - <%= @character.char_class %>
+</h4>
+<br />
 <% if @character.user_id == @current_user.id %>
-  <p><a href="/characters/<%= @character.id %>/edit">Edit</a></p>
   <form action="/characters/<%= @character.id %>/delete" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <button type="submit" name="delete" value="delete">Delete</button>
+    <p>
+      <a href="/characters/<%= @character.id %>/edit">Edit</a>
+      <button class="btn btn-default" type="submit" name="delete" value="delete">Delete</button>
+    </p>
   </form>
 <% end %>
 <p>
