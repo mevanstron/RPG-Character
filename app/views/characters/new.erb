@@ -1,10 +1,19 @@
 <h1>New Character</h1>
 <form action="/characters" method="post">
-  <label for="name">Name: </label><input id ="name" type="text" name="character[name]" value="">
-  <br></br>
-  <label for="race">Race: </label><input id ="race" type="text" name="character[race]" value="">
-  <br></br>
-  <label for="class">Class: </label><input id ="class" type="text" name="character[char_class]" value="">
-  <br></br>
-  <p><button type="submit" name="submit" value="submit">Create</button> <a href="/users/<%= @user.slug %>">Cancel</a></p>
+  <div class="form_group">
+    <label for="name">Name:</label>
+    <input id ="name" type="text" class="form-control" name="character[name]" value="">
+    <br></br>
+  </div>
+  <div class="form_group">
+    <label for="race">Race:</label>
+    <input id ="race" type="text" class="form-control" name="character[race]" value="">
+    <br></br>
+  </div>
+  <div class="form_group">
+    <label for="class">Class:</label>
+    <input id ="class" type="text" class="form-control" name="character[char_class]" value="">
+    <br></br>
+  </div>
+  <p><button class="btn btn-default" type="submit" name="submit" value="submit">Create</button> <a href="/users/<%= @user.slug %>">Cancel</a></p>
 </form>
