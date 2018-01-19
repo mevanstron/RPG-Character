@@ -3,8 +3,3 @@
 <% @user.characters.each do |character| %>
 <a href= "/characters/<%= character.id %>"><%= character.name %> - <%= character.char_class %></a><br />
 <% end %>
-<p>
-  <a href="/characters/new">New Character</a>
-  <a href="/characters">All Characters</a>
-  <a href="/logout">Logout</a>
-</p>

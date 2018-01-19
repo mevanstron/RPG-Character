@@ -14,7 +14,7 @@
               <a class="nav-item nav-link" href="/signup">Signup</a>
               <a class="nav-item nav-link" href="/login">Login</a>
             <% else %>
-              <a class="nav-item nav-link" href="/users<%= @user.slug %>">Home</a>
+              <a class="nav-item nav-link" href="/users/<%= Helpers.current_user(session).slug %>">Home</a>
               <a class="nav-item nav-link" href="/characters/new">New Character</a>
               <a class="nav-item nav-link" href="/characters">All Characters</a>
               <a class="nav-item nav-link" href="/logout">Logout</a>
