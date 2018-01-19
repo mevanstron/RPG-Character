@@ -1,10 +1,19 @@
 <h1>Sign Up for an Account!</h1>
 <form action="/signup" method="post">
-  <label for="username">Username: </label><input id="username" type="text" name="user[username]" value="" required>
-  <br></br>
-  <label for="email">Email: </label><input id="email" type="text" name="user[email]" value="" required>
-  <br></br>
-  <label for="password">Password: </label><input id="password" type="password" name="user[password]" value="" required>
-  <br></br>
-  <button type="submit" name="submit" value="submit">Sign Up</button> <a href="/">Cancel</a>
+  <div class="form_group">
+    <label for="username">Username:</label>
+    <input id="username" type="text" class="form-control" name="user[username]" value="" required>
+    <br></br>
+  </div>
+  <div class="form_group">
+    <label for="email">Email:</label>
+    <input id="email" type="text" class="form-control" name="user[email]" value="" required>
+    <br></br>
+  </div>
+  <div class="form_group">
+    <label for="password">Password:</label>
+    <input id="password" type="password" class="form-control" name="user[password]" value="" required>
+    <br></br>
+  </div>
+  <button class="btn btn-default" type="submit" name="submit" value="submit">Sign Up</button> <a href="/">Cancel</a>
 </form>
