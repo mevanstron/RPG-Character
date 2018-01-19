@@ -1,8 +1,14 @@
 <h1>Login</h1>
 <form action="/login" method="post">
-  <label for="username">Username: <input id="username" type="text" name="user[username]" value="" required></label>
-  <br></br>
-  <label for="password">Password: <input id="password" type="password" name="user[password]" value="" required></label>
-  <br></br>
-  <button type="submit" name="submit" vlaue="submit">Login</button> <a href="/">Cancel</a>
+  <div class="form_group">
+    <label for="username">Username:</label>
+    <input id="username" type="text" class="form-control" name="user[username]" value="" required>
+    <br></br>
+  </div>
+  <div class="form_group">
+    <label for="password">Password:</label>
+    <input id="password" type="password" class="form-control" name="user[password]" value="" required>
+    <br></br>
+  </div>
+  <button class="btn btn-default" type="submit" name="submit" vlaue="submit">Login</button> <a href="/">Cancel</a>
 </form>
