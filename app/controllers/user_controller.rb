@@ -40,6 +40,7 @@ class UserController < ApplicationController
       session[:user_id] = user.id
       redirect to "/users/#{user.slug}"
     else
+      flash[:notice] = "The Username / Password combination provided is invalid."
       redirect to'/login'
     end
   end
