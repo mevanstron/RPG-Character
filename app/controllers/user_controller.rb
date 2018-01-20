@@ -16,9 +16,11 @@ class UserController < ApplicationController
         session[:user_id] = user.id
         redirect to '/characters'
       else
+
         redirect to '/signup'
       end
     else
+      flash[:notice] = "An account already exists with the provided Username."
       redirect to '/signup'
     end
   end
