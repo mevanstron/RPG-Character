@@ -19,7 +19,8 @@ Specs:
     *Forms have 'required' attribute on fields, User and character objects make use of validates_presence_of method.*
 - [x] Display validation failures to user with error message (example form URL e.g. /posts/new)
     *Flash messages appear if user attempts to create an account with an already existing username, or login with faulty information*
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+    *All items are present in README.md*
 
 Confirm
 - [x] You have a large number of small Git commits
