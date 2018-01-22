@@ -65,7 +65,7 @@ class CharacterController < ApplicationController
     if Helpers.current_user(session).id == Character.find(params[:id]).user_id
       character = Character.find(params[:id])
       character.delete
-      redirect to '/characters'
+      redirect to "/users/#{Helpers.current_user(session).slug}"
     else
       redirect to "/characters/#{params[:id]}"
     end

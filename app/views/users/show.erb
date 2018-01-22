@@ -1,5 +1,9 @@
 <h1>Hello <%= @user.username %></h1>
 <h4>Your Characters</h4>
-<% @user.characters.each do |character| %>
-<a href= "/characters/<%= character.id %>"><%= character.name %> - <%= character.char_class %></a><br />
+<% if @user.characters.empty? %>
+  <p>You do not have any characters.</p>
+<% else %>
+  <% @user.characters.each do |character| %>
+    <a href= "/characters/<%= character.id %>"><%= character.name %> - <%= character.char_class %></a><br />
+  <% end %>
 <% end %>

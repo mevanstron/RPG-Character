@@ -14,7 +14,7 @@ class UserController < ApplicationController
 
       if user.save
         session[:user_id] = user.id
-        redirect to '/characters'
+        redirect to "/users/#{Helpers.current_user(session).slug}"
       else
 
         redirect to '/signup'
