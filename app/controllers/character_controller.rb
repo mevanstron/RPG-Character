@@ -1,7 +1,7 @@
 class CharacterController < ApplicationController
 
   get '/characters' do
-    if !Helpers.logged_in?(session)
+    if !logged_in?
       redirect to '/'
     else
       @characters = Character.all
@@ -10,7 +10,7 @@ class CharacterController < ApplicationController
   end
 
   get '/characters/new' do
-    if !Helpers.logged_in?(session)
+    if !logged_in?
       redirect to '/'
     else
       erb :'/characters/new'
@@ -29,20 +29,20 @@ class CharacterController < ApplicationController
   end
 
   get '/characters/:id' do
-    if !Helpers.logged_in?(session)
+    if !logged_in?
       redirect to '/'
     else
       @character = Character.find(params[:id])
-      @current_user = Helpers.current_user(session)
+      @current_user = current_user
       erb :'/characters/show'
     end
   end
 
   get '/characters/:id/edit' do
-    if !Helpers.logged_in?(session)
+    if !logged_in?
       redirect to '/'
     else
-      if Helpers.current_user(session).id == Character.find(params[:id]).user_id
+      if current_user.id == Character.find(params[:id]).user_id
         @character = Character.find(params[:id])
         erb :'/characters/edit'
       else
@@ -52,20 +52,24 @@ class CharacterController < ApplicationController
   end
 
   patch '/characters/:id' do
-    character = Character.find(params[:id])
-    character.update(params[:character])
-    if character.save
-      redirect to "/characters/#{character.id}"
+    if current_user.id == Character.find(params[:id]).user_id
+      character = Character.find(params[:id])
+      character.update(params[:character])
+      if character.save
+        redirect to "/characters/#{character.id}"
+      else
+        redirect to "/characters/#{character.id}/edit"
+      end
     else
-      redirect to "/characters/#{character.id}/edit"
+      redirect to "/characters/#{params[:id]}"
     end
   end
 
   delete '/characters/:id/delete' do
-    if Helpers.current_user(session).id == Character.find(params[:id]).user_id
+    if current_user.id == Character.find(params[:id]).user_id
       character = Character.find(params[:id])
       character.delete
-      redirect to "/users/#{Helpers.current_user(session).slug}"
+      redirect to "/users/#{current_user.slug}"
     else
       redirect to "/characters/#{params[:id]}"
     end

@@ -15,5 +15,5 @@
     <input id ="class" type="text" class="form-control" name="character[char_class]" value="">
     <br></br>
   </div>
-  <p><button class="btn btn-default" type="submit" name="submit" value="submit">Create</button> <a href="/users/<%= Helpers.current_user(session).slug %>">Cancel</a></p>
+  <p><button class="btn btn-default" type="submit" name="submit" value="submit">Create</button> <a href="/users/<%= current_user.slug %>">Cancel</a></p>
 </form>

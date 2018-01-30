@@ -1,7 +1,7 @@
 class UserController < ApplicationController
 
   get '/signup' do
-    if !Helpers.logged_in?(session)
+    if !logged_in?
       erb :'users/new'
     else
       redirect to '/characters'
@@ -14,7 +14,7 @@ class UserController < ApplicationController
 
       if user.save
         session[:user_id] = user.id
-        redirect to "/users/#{Helpers.current_user(session).slug}"
+        redirect to "/users/#{current_user.slug}"
       else
 
         redirect to '/signup'
@@ -26,7 +26,7 @@ class UserController < ApplicationController
   end
 
   get '/login' do
-    if !Helpers.logged_in?(session)
+    if !logged_in?
       erb :'users/login'
     else
       redirect to '/characters'
@@ -46,20 +46,20 @@ class UserController < ApplicationController
   end
 
   get '/users/:slug' do
-    if !Helpers.logged_in?(session)
+    if !logged_in?
       redirect to '/'
     else
-      if Helpers.current_user(session).slug == params[:slug]
+      if current_user.slug == params[:slug]
         @user = User.find_by_slug(params[:slug])
         erb :'users/show'
       else
-        redirect to "/users/#{Helpers.current_user(session).slug}"
+        redirect to "/users/#{current_user.slug}"
       end
     end
   end
 
   get '/logout' do
-    if Helpers.logged_in?(session)
+    if logged_in?
       session.clear
     end
       redirect "/"
